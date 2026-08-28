@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  /* -- Ink (dark / AI surface) -- */
+  --color-ink: #0b1220;
+  --color-ink-2: #121b2e;
+  --color-ink-3: #1b2740;
+  --color-ink-4: #263252;
+
+  /* -- Paper (light / evidence surface) -- */
+  --color-paper: #eceff4;
+  --color-paper-2: #f6f7fa;
+  --color-paper-3: #ffffff;
+  --color-line: #d7dbe3;
+
+  /* -- Text -- */
+  --color-slate: #5b6472;
+  --color-slate-light: #8991a0;
+  --color-text-dark: #0e1420;
+  --color-text-onink: #e7eaf1;
+  --color-text-onink-muted: #9aa5bb;
+
+  /* -- Brand: brass seal -- */
+  --color-brass: #b08d57;
+  --color-brass-dark: #8c6d3f;
+  --color-brass-light: #d8bd8a;
+
+  /* -- Status -- */
+  --color-verified: #2f6f4f;
+  --color-verified-bg: #e7f1ec;
+  --color-alert: #a5432c;
+  --color-alert-bg: #f7e9e5;
+  --color-caution: #8a6a1f;
+  --color-caution-bg: #f3ecdc;
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Public Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+
+  --shadow-panel: 0 1px 2px rgba(11, 18, 32, 0.06), 0 8px 24px -8px rgba(11, 18, 32, 0.12);
+  --shadow-panel-lg: 0 2px 8px rgba(11, 18, 32, 0.08), 0 24px 48px -16px rgba(11, 18, 32, 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brass-light);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+  border: 2px solid var(--color-paper);
+}
+.dark-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-ink-4);
+  border: 2px solid var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.seal-ring {
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  position: relative;
+}
+.seal-ring::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  opacity: 0.45;
+}
+
+.paper-texture {
+  background-image: radial-gradient(rgba(11, 18, 32, 0.035) 0.6px, transparent 0.6px);
+  background-size: 12px 12px;
+}
+
+.ledger-rule {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--color-line),
+    var(--color-line) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+}
